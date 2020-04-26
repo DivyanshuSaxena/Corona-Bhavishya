@@ -2,6 +2,32 @@
 
 Efforts towards predicting numbers based on lockdown and movement characteristics of masses
 
+## Notes for Jupyter Notebooks
+
+1. The Python file corresponding to a Jupyter Notebook follow the same naming
+2. Various flags are used in the Jupyter Notebook (and hence, the Python File) for choosing what models should be run. Check the `# Flags` commented section [here](https://github.com/DivyanshuSaxena/Corona-Bhavishya/blob/master/non_neural_predictions.py#L18).
+3. **Committing a Jupyter Notebook**  
+Please note that a Jupyter Notebook must be committed after striping its output and metadata, to avoid unnecessary changes to the repo, and to keep it small in size. Use [nbstripout](https://github.com/kynan/nbstripout) for adding a git hook, as follows:  
+    * Install `nbstripout` using pip or conda
+
+      ```console
+      >>> pip install --upgrade nbstripout
+      ```
+
+      or
+
+      ```console
+      >>> conda install -c conda-forge nbstripout
+      ```
+
+    * Use `nbstripout` for the current repo using:
+
+      ```console
+      >>> nbstripout --install
+      ```
+
+    For further instructions, check documentation [here](https://github.com/kynan/nbstripout/blob/master/README.rst).
+
 ## Todo
 
 - [X] Make data cumulative
