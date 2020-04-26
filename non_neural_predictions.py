@@ -58,7 +58,7 @@ if linear_reg:
         plt.show()
 
 
-# In[21]:
+# In[43]:
 
 
 if sv_reg:
@@ -69,7 +69,7 @@ if sv_reg:
     for i in range(len(arr_state[0])):
         y = arr_state[:,i]
         x_test = np.arange(1,56).reshape(55,1)
-        clf = SVR(C=1.0, epsilon=0.2)
+        clf = SVR(C=100.0, gamma=100)
         clf.fit(X, y)
         y_test = clf.predict(x_test)
 
