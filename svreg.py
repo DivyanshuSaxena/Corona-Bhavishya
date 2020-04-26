@@ -12,7 +12,7 @@ np.savetxt("state-date-total-data-cumulative.csv", arr_state.astype(int), fmt='%
 X = np.arange(1,53)
 X = np.reshape(X, (52,1))
 
-for i in range(len(arr_state)):
+for i in range(len(arr_state[0])):
 	y = arr_state[:,i]
 	x_test = np.arange(1,56).reshape(55,1)
 	clf = SVR(C=1.0, epsilon=0.2)

@@ -12,7 +12,7 @@ np.savetxt("state-date-total-data-cumulative.csv", arr_state.astype(int), fmt='%
 X = np.arange(1,53)
 X = np.reshape(X, (52,1))
 
-for i in range(len(arr_state)):
+for i in range(len(arr_state[0])):
 
 	y = arr_state[:,i]
 	y = np.reshape(y, (52,1))
@@ -23,16 +23,6 @@ for i in range(len(arr_state)):
 	plt.plot(x_test,y_test)
 	plt.show()
 
-
-
-
-###################### To-do #####################
-# 1. Make data cumulative
-# 2. simple LinearRegression on the data
-# 3. plot them
-# 4. now fit the non-linear curve
-# 5. add different parameters data
-# 6. 
 
 
 ############ EXAMPLE CODE ##########################
