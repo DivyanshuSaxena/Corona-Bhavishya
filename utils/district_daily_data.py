@@ -39,16 +39,19 @@ def get_district_data(district):
   return district_data
 
 
-def get_district_time_series(district, start_date, num_days, cumulative=True):
+def get_district_time_series(district,
+                             start_date,
+                             num_days=-1,
+                             cumulative=False):
   """Return the time series data of the given district
 
   Arguments:
       district {String} -- Name of the district
       start_date {String} -- Start Date in format DD/MM/YYYY
-      num_days {Integer} -- Number of days
 
   Keyword Arguments:
-      cumulative {bool} -- Whether cumulative data is needed (default: {True})
+      num_days {Integer} -- Number of days (default: {-1, to get all days data})
+      cumulative {bool} -- Whether cumulative data is needed (default: {False})
 
   Returns:
       List -- List of requisite numbers. Length = num_days
@@ -81,6 +84,30 @@ def get_district_time_series(district, start_date, num_days, cumulative=True):
   return ret_list
 
 
+def get_district_list():
+  """Get the list of all the districts in the district-data api
+
+  Returns:
+      Set -- Set of all districts
+  """
+  with open(data_dir + 'district-data.json') as f:
+    district_dict = json.load(f)
+  districts = set([])
+
+  for date, data in district_dict.items():
+    if date == '03/02/2020':
+      continue
+    districts.update(data.keys())
+
+  # Remove unnecessary points
+  districts.remove('total-infected')
+  districts.remove('max-legend-value')
+  districts.remove('splitPoints')
+  return districts
+
+
 if __name__ == '__main__':
-  d = get_district_time_series('Delhi', '04/03/2020', 7, True)
+  d = get_district_time_series('Delhi', '04/03/2020')
   print(d)
+  s = get_district_list()
+  print(len(s))
