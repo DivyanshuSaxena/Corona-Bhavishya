@@ -84,7 +84,7 @@ if linear_reg:
 # In[43]:
 
 
-if sv_reg and not dist_reg:
+if sv_reg and not episodes:
     # Get x and y plots - SVRegression
     X = np.arange(1,53)
     X = np.reshape(X, (52,1))
@@ -104,7 +104,7 @@ if sv_reg and not dist_reg:
 # In[87]:
 
 
-if dist_reg:
+if episodes:
     # Construct train and test data and fit Support Vector Regression
     x = []
     y = []
