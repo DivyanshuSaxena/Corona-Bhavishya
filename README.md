@@ -28,14 +28,23 @@ Please note that a Jupyter Notebook must be committed after striping its output 
 
     For further instructions, check documentation [here](https://github.com/kynan/nbstripout/blob/master/README.rst).
 
+## Parameters
+
+- [X] Time Series Data of district (window)
+- [ ] Population Density
+- [ ] Lockdown Level
+- [ ] Parameters of SIR Model
+
 ## Todo
 
 - [X] Make data cumulative
 - [X] Plot a simple LinearRegression on the data
 - [ ] Fit a non-linear curve
 - [ ] Add different parameters data
-- [ ] Get District wise data for states
+- [X] Get District wise data for states
+- [ ] Get data for states and probably, international data as well
 - [ ] Try Neural Models (RNN, LSTM maybe)
+- [ ] Predict for data on India
 
 ## Sources
 
