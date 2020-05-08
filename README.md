@@ -31,19 +31,25 @@ Please note that a Jupyter Notebook must be committed after striping its output 
 ## Parameters
 
 - [X] Time Series Data of district (window)
-- [ ] Population Density
-- [ ] Lockdown Level
+- [X] Population Density
+- [X] Lockdown Level  
+    0: No_Lockdown  
+    1: Pre-lockdown (Large_Public_Spaces)  
+    2: Green_Zone (Essentials_with_public_transports)  
+    3: Orange_Zone (Essentials_with_private_transports)  
+    4: Red_Zone (Only_Essentials)  
+    5: Only_Emergency_services  
 - [ ] Parameters of SIR Model
 
 ## Todo
 
 - [X] Make data cumulative
 - [X] Plot a simple LinearRegression on the data
-- [ ] Fit a non-linear curve
+- [X] Fit a non-linear curve
 - [ ] Add different parameters data
 - [X] Get District wise data for states
-- [ ] Get data for states and probably, international data as well
-- [ ] Try Neural Models (RNN, LSTM maybe)
+- [X] Get data for states and probably, international data as well
+- [X] Try Neural Models (RNN, LSTM maybe)
 - [ ] Predict for data on India
 
 ## Sources
