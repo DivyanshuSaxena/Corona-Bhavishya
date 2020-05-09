@@ -46,10 +46,12 @@ Please note that a Jupyter Notebook must be committed after striping its output 
 - [X] Make data cumulative
 - [X] Plot a simple LinearRegression on the data
 - [X] Fit a non-linear curve
-- [ ] Add different parameters data
 - [X] Get District wise data for states
 - [X] Get data for states and probably, international data as well
 - [X] Try Neural Models (RNN, LSTM maybe)
+- [ ] Add different parameters data (Multivariate LSTM)
+- [ ] Check Loss functions, and use the best fit
+- [ ] Multiple models for consequent predictions - subsequent usage of these multiple models
 - [ ] Predict for data on India
 
 ## Sources
