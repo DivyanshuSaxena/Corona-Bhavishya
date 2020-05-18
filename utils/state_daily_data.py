@@ -2,6 +2,7 @@
 # Reads the data from the state json file
 import os
 import json
+import numpy as np
 from datetime import datetime as dt
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -31,12 +32,12 @@ def get_infection_start(state):
   with open(state_data_dir + 'state-data.json') as f:
     state_dict = json.load(f)
 
-  start_date = '03/02/2020'
+  start_date = '16/05/2020'
   for date, data in state_dict.items():
     if date == '03/02/2020':
       continue
     if state in data and dt.strptime(start_date, date_format) > dt.strptime(
-        date, date_format):
+        date, date_format) and data[state] !=0:
       start_date = date
 
   return start_date
@@ -80,7 +81,7 @@ def get_state_time_series(state, start_date, cumulative=False, num_days=-1):
       List -- List of requisite numbers. Length = num_days
   """
   state_data = get_state_data(state)
-
+  # print("state_data:", state_data, "len(state_data): ", len(state_data))
   ret_list = []
   prev_date = dt.strptime(start_date, date_format)
   for obj in state_data:
@@ -93,7 +94,7 @@ def get_state_time_series(state, start_date, cumulative=False, num_days=-1):
       if days > 1:
         # Append the last number again for those many days
         for _in in range(days - 1):
-          ret_list.append(ret_list[-1])
+          ret_list.append(0)
 
     # Add data for the range given
     if curr_date >= dt.strptime(start_date, date_format):
@@ -108,9 +109,32 @@ def get_state_time_series(state, start_date, cumulative=False, num_days=-1):
     if len(ret_list) == num_days:
       break
 
-  if not cumulative:
-    convert_to_daily(ret_list)
+  if cumulative:
+    arr_state = np.array(ret_list)
+    arr_state = np.cumsum(arr_state, axis=0)
+    ret_list = arr_state.tolist()
   return ret_list
+
+def get_all_states():
+  """Get the list of all the districts in the district-data api
+
+  Returns:
+      Set -- Set of all districts
+  """
+  with open(state_data_dir + 'state-data.json') as f:
+    state_dict = json.load(f)
+  states = set([])
+
+  for date, data in state_dict.items():
+    if date == '03/02/2020':
+      continue
+    states.update(data.keys())
+
+  # Remove unnecessary points
+  # districts.remove('total-infected')
+  # districts.remove('max-legend-value')
+  # districts.remove('splitPoints')
+  return states
 
 
 if __name__ == '__main__':
